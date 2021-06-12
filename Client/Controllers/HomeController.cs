@@ -20,6 +20,7 @@ namespace Client.Controllers
 
         public IActionResult Index()
         {
+		var a = 123;
             return View();
         }
 
