@@ -119,3 +119,5 @@ C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\
 C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Account\Index.cshtml.g.cs
 C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Views\Seminar\Details.cshtml.g.cs
 C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Seminar\Create.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Question\Index.cshtml.g.cs

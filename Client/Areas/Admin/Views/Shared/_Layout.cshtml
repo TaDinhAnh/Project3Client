@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
@@ -193,33 +193,27 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                            <span class="menu-title">Table</span>
+                            <span class="menu-title">Seminar</span>
                             <i class="menu-arrow"></i>
-                            <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+                            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="account" >Account</a></li>
-                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="seminar" >Seminar</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="seminar" >List</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="seminar" asp-action="create" >Create</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/icons/mdi.html">
-                            <span class="menu-title">Icons</span>
+                        <a class="nav-link" asp-area="admin" asp-controller="account" asp-action="index">
+                            <span class="menu-title">Account</span>
                             <i class="mdi mdi-contacts menu-icon"></i>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="pages/forms/basic_elements.html">
-                            <span class="menu-title">Forms</span>
+                        <a class="nav-link" asp-area="admin" asp-controller="question" asp-action="index">
+                            <span class="menu-title">Question&Answer</span>
                             <i class="mdi mdi-format-list-bulleted menu-icon"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages/charts/chartjs.html">
-                            <span class="menu-title">Charts</span>
-                            <i class="mdi mdi-chart-bar menu-icon"></i>
                         </a>
                     </li>
                 </ul>
@@ -233,8 +227,7 @@
                 <!-- partial:partials/_footer.html -->
                 <footer class="footer">
                     <div class="container-fluid clearfix">
-                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates </a> from Bootstrapdash.com</span>
+                        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2021</span>
                     </div>
                 </footer>
                 <!-- partial -->
