@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace Client.Controllers
 {
     public class HomeController : Controller
@@ -20,7 +21,7 @@ namespace Client.Controllers
 
         public IActionResult Index()
         {
-		var a = 123;
+          
             return View();
         }
 
