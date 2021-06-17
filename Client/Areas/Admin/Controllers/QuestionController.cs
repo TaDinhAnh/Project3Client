@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Client.Areas.Admin.Controllers
 {
     [Area("admin")]
-    [Route("admin/account")]
-    public class AccountController : Controller
+    [Route("admin/question")]
+    public class QuestionController : Controller
     {
-        [Route("index")]
+        [Route("Index")]
         public IActionResult Index()
         {
             return View();
