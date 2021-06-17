@@ -21,26 +21,28 @@
                 <tbody>
                     @foreach (var acc in ViewBag.listAccount)
                     {
-                    <td>@acc.UserName</td>
-                    <td>@acc.IdPeople</td>
-                    <td>@acc.Date.ToString("dd/MM/yyyy")</td>
-                    <td>@acc.Role</td>
-                    @if (acc.Status)
-                    {
-                        <td>
-                            <label class="badge badge-gradient-success">ENABLE</label>
-                        </td>
+                        <tr>
+                            <td>@acc.UserName</td>
+                            <td>@acc.IdPeople</td>
+                            <td>@acc.Date.ToString("dd/MM/yyyy")</td>
+                            <td>@acc.Role</td>
+                            @if (acc.Status)
+                            {
+                                <td>
+                                    <label class="badge badge-gradient-success">ENABLE</label>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <label class="badge badge-gradient-danger">DISNABLE</label>
+                                </td>
+                            }
+                            <td><button type="button" class="btn btn-gradient-success btn-rounded btn-fw">Del</button></td>
+                        </tr>
                     }
-                    else
-                    {
-                        <td>
-                            <label class="badge badge-gradient-danger">DISNABLE</label>
-                        </td>
-                    }
-                    <td><button type="button" class="btn btn-gradient-success btn-rounded btn-fw">Del</button></td>
-                }
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
