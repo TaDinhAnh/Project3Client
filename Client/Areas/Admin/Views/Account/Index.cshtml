@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
@@ -11,9 +10,8 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th> User </th>
+                        <th>Username</th>
                         <th> Id People </th>
-                        <th> Class </th>
                         <th> Date </th>
                         <th> Role </th>
                         <th> Status </th>
@@ -21,74 +19,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                        </td>
-                        <td>132</td>
-                        <td> class1 </td>
-                        <td> 15/03/2000</td>
-                        <td>student</td>
+                    @foreach (var acc in ViewBag.listAccount)
+                    {
+                    <td>@acc.UserName</td>
+                    <td>@acc.IdPeople</td>
+                    <td>@acc.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@acc.Role</td>
+                    @if (acc.Status)
+                    {
                         <td>
                             <label class="badge badge-gradient-success">ENABLE</label>
                         </td>
-                        <td><button type="button" class="btn btn-gradient-success btn-rounded btn-fw">Del</button></td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                        </td>
-                        <td>132</td>
-                        <td> class1 </td>
-                        <td> 15/03/2000</td>
-                        <td>student</td>
+                    }
+                    else
+                    {
                         <td>
-                            <label class="badge badge-gradient-success">ENABLE</label>
+                            <label class="badge badge-gradient-danger">DISNABLE</label>
                         </td>
-                        <td><button type="button" class="btn btn-gradient-success btn-rounded btn-fw">Del</button></td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                        </td>
-                        <td>132</td>
-                        <td> class1 </td>
-                        <td> 15/03/2000</td>
-                        <td>student</td>
-                        <td>
-                            <label class="badge badge-gradient-success">ENABLE</label>
-                        </td>
-                        <td><button type="button" class="btn btn-gradient-success btn-rounded btn-fw">Del</button></td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                        </td>
-                        <td>132</td>
-                        <td> class1 </td>
-                        <td> 15/03/2000</td>
-                        <td>student</td>
-                        <td>
-                            <label class="badge badge-gradient-success">ENABLE</label>
-                        </td>
-                        <td><button type="button" class="btn btn-gradient-success btn-rounded btn-fw mb-md-1">Del</button></td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            <img src="../../assets/images/faces-clipart/pic-1.png" alt="image" />
-                        </td>
-                        <td>132</td>
-                        <td> class1 </td>
-                        <td> 15/03/2000</td>
-                        <td>student</td>
-                        <td>
-                            <label class="badge badge-gradient-success">ENABLE</label>
-                        </td>
-                        <td><button type="button" class="btn btn-gradient-success btn-rounded btn-fw">Del</button></td>
-                    </tr>
-                </tbody>
-            </table>
+                    }
+                    <td><button type="button" class="btn btn-gradient-success btn-rounded btn-fw">Del</button></td>
+                }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
-
