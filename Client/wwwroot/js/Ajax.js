@@ -1,6 +1,11 @@
 ﻿
 $(document).ready(function () {
 
+    function convertDate(stringDate) {
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(stringDate)
+        return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/')
+    }
     $("#next").click(function () {
         var message = $('#textAfq').val();
         $("#faq").val(message)
@@ -146,13 +151,13 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (listAcc) {
                 var result = '';
-                console.log(listAcc);
+                
                 for (var i = 0; i < listAcc.length; i++) {
                     result += '<tr>';
                     result += '<td hidden>' + listAcc[i].id + '</td>';
-                    result += '<td>' + listAcc[i].userName + '</td>';
+                    result += '<td><img src="/img/avatar/' + listAcc[i].img+'" class="mr-2" alt="image">' + listAcc[i].userName + '</td>';
                     result += '<td>' + listAcc[i].idPeople + '</td>';
-                    result += '<td>' + listAcc[i].date + '</td>';
+                    result += '<td>' + convertDate(listAcc[i].date) + '</td>';
                     result += '<td>' + listAcc[i].role + '</td>';
                     if (listAcc[i].status) {
                         result += '<td><label class="badge badge-gradient-success" > ENABLE</label></td>';

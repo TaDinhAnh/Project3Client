@@ -40,10 +40,10 @@
                                 {
                                     <tr>
                                         <td>
-                                            <img src="~/assets/images/faces/face1.jpg" class="mr-2" alt="image"> @seminar.Name
+                                            <img src="~/img/seminar/@seminar.Img" class="mr-2" alt="image"> @seminar.Name
                                         </td>
                                         <td>@seminar.Presenters</td>
-                                        <td>@seminar.Day </td>
+                                        <td>@seminar.Day.ToString("dd/MM/yyyy") </td>
                                         @if (seminar.Day < DateTime.Now && seminar.Status)
                                         {
                                             <td>

@@ -10,6 +10,7 @@
             <table class="table table-striped" id="tableAcc">
                 <thead>
                     <tr>
+
                         <th>Username</th>
                         <th> Id People </th>
                         <th> Date </th>
@@ -24,7 +25,9 @@
                         {
                             <tr>
                                 <td hidden>@acc.Id</td>
-                                <td>@acc.UserName</td>
+                                <td>
+                                    <img src="~/img/avatar/@acc.Img" class="mr-2" alt="image">@acc.UserName
+                                </td>
                                 <td>@acc.IdPeople</td>
                                 <td>@acc.Date.ToString("dd/MM/yyyy")</td>
                                 <td>@acc.Role</td>
