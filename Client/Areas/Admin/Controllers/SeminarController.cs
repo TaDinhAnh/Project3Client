@@ -3,8 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-using Client.Models;
+using Client.ServiceAPI;
 using System.Net.Http.Json;
 using System.Diagnostics;
 using Newtonsoft.Json;
@@ -15,9 +14,15 @@ namespace Client.Areas.Admin.Controllers
     [Route("admin/seminar")]
     public class SeminarController : Controller
     {
-        [Route("index")]
-        public   IActionResult Index()
+        private ISeminarAPI seminarAPI;
+        public SeminarController(ISeminarAPI _seminarAPI)
         {
+            seminarAPI = _seminarAPI;
+        }
+        [Route("index")]
+        public IActionResult Index()
+        {
+            ViewBag.listSeminar = seminarAPI.findAll();
             return View();
         }
         [Route("create")]
@@ -25,6 +30,6 @@ namespace Client.Areas.Admin.Controllers
         {
             return View();
         }
-      
+
     }
 }

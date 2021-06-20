@@ -27,6 +27,9 @@ namespace Client
             services.AddHttpClient();
             services.AddScoped<ISeminarAPI, SerminarAPI>();
             services.AddScoped<IAccountAPI, AccountAPI>();
+            services.AddScoped<IQuestionAPI, QuestionAPI>();
+            services.AddScoped<IAnswerAPI, AnswerAPI>();
+            services.AddScoped<IFaqAPI, FaqAPI>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -9,41 +9,34 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Question Table</h4>
-              
+
                 <table class="table">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Quesntion</th>
-                            <th>Created</th>
+                            <th>Updated</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>53275531</td>
-                            <td>12 May 2017</td>
-                            <td><label class="badge badge-danger">enable</label></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>53275531</td>
-                            <td>12 May 2017</td>
-                            <td><label class="badge badge-danger">enable</label></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>53275531</td>
-                            <td>12 May 2017</td>
-                            <td><label class="badge badge-danger">enable</label></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>53275531</td>
-                            <td>12 May 2017</td>
-                            <td><label class="badge badge-danger">enable</label></td>
-                        </tr>
+                        @if (ViewBag.listQuestion != null)
+                            @foreach (var item in ViewBag.listQuestion)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Question1</td>
+                                    <td>@item.Updated.ToString("dd/MM/yyyy")</td>
+                                    @if (item.Status)
+                                    {
+                                        <td><label class="badge badge-success">enable</label></td>
+                                    }
+                                    else
+                                    {
+                                        <td><label class="badge badge-danger">disnable</label></td>
+                                    }
+                                </tr>
+                            }
                     </tbody>
                 </table>
             </div>
@@ -59,34 +52,29 @@
                             <th>id</th>
                             <th>Answer</th>
                             <th>Id Question</th>
+                            <th>Updated</th>
                             <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>answer 1</td>
-                            <td> 1</td>
-                            <td><label class="badge badge-danger">true</label></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>answer 1</td>
-                            <td> 1</td>
-                            <td><label class="badge badge-danger">true</label></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>answer 1</td>
-                            <td> 1</td>
-                            <td><label class="badge badge-danger">true</label></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>answer 1</td>
-                            <td> 1</td>
-                            <td><label class="badge badge-danger">true</label></td>
-                        </tr>
+                        @if (ViewBag.listAnswer != null)
+                            @foreach (var item in ViewBag.listAnswer)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>@item.Answer1</td>
+                                    <td>@item.IdQuestion</td>
+                                    <td>@item.Updated.ToString("dd/MM/yyyy")</td>
+                                    @if (item.Status)
+                                    {
+                                        <td><label class="badge badge-success">enable</label></td>
+                                    }
+                                    else
+                                    {
+                                        <td><label class="badge badge-danger">disnable</label></td>
+                                    }
+                                </tr>
+                            }
                     </tbody>
                 </table>
             </div>

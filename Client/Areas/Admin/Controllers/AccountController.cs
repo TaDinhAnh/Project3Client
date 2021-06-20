@@ -25,5 +25,11 @@ namespace Client.Areas.Admin.Controllers
             ViewBag.listAccount = accountAPI.findAll();
             return View();
         }
+        [Route("del")]
+        public IActionResult Del(int idAcc)
+        {
+            var listAcc = accountAPI.Del(idAcc);
+            return new JsonResult(listAcc);
+        }
     }
 }

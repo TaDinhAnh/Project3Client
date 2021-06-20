@@ -8,6 +8,7 @@ namespace Client.ServiceAPI
 {
     public interface ISeminarAPI
     {
-       List<Seminar> findResent();
+        List<Seminar> findResent();
+        List<Seminar> findAll();
     }
 }

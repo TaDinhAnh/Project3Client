@@ -21,6 +21,7 @@ namespace Client.Areas.Admin.Controllers
         }
         [Route("Index")]
         [Route("")]
+        [Route("~/")]
         public IActionResult Index()
         {
             ViewBag.listSeminar = seminarAPI.findResent();

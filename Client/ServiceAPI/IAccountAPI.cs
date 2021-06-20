@@ -9,5 +9,7 @@ namespace Client.ServiceAPI
    public interface IAccountAPI
     {
         List<Account> findAll();
+        Account login(Account account);
+        List<Account> Del(int idAcc);
     }
 }
