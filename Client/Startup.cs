@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Client.ServiceAPI;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace Client
 {
@@ -30,6 +32,13 @@ namespace Client
             services.AddScoped<IQuestionAPI, QuestionAPI>();
             services.AddScoped<IAnswerAPI, AnswerAPI>();
             services.AddScoped<IFaqAPI, FaqAPI>();
+            services.AddScoped<IScoreAPI, ScoreAPI>();
+            services.AddScoped<ITopicAPI, TopicAPI>();
+            services.AddScoped<IAllPeopleAPI, AllpeopleAPI>();
+            services.AddScoped<IPerformerAPI, PerformerAPI>();
+            services.AddScoped<IImgAPI, ImgAPI>();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

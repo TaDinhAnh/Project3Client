@@ -109,67 +109,69 @@ $(document).ready(function () {
         });
     });
     $("#tableFAQ").on('click', '.btnDelFAQ', function () {
-        // get the current row
-        var currentRow = $(this).closest("tr");
-        var idFaq = currentRow.find("td:eq(0)").text();
-        $.ajax({
-            type: 'GET',
-            url: '/admin/faq/del',
-            data: {
-                idFaq: idFaq
-            },
-            contentType: '/application/json; charset=utf-8',
-            dataType: 'json',
-            success: function (listFaq) {
-                var result = '';
-                console.log(listFaq);
-                for (var i = 0; i < listFaq.length; i++) {
-                    result += '<tr>';
-                    result += '<td hidden>' + listFaq[i].id + '</td>';
-                    result += '<td>' + listFaq[i].faq1 + '</td>';
-                    result += '<td>' + listFaq[i].anSwer + '</td>';
-                    result += '<td><button type="button" class="btn btn-gradient-warning btnUpdateFAQ"><i class="mdi mdi-grease-pencil"></i></button>';
-                    result += '<button type="button" class="btn btn-gradient-danger btnDelFAQ"><i class="mdi mdi-delete-forever"></i></button></td>';
-                    result += '</tr>';
+        if (confirm('are you sure?')) {
+            var currentRow = $(this).closest("tr");
+            var idFaq = currentRow.find("td:eq(0)").text();
+            $.ajax({
+                type: 'GET',
+                url: '/admin/faq/del',
+                data: {
+                    idFaq: idFaq
+                },
+                contentType: '/application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (listFaq) {
+                    var result = '';
+                    console.log(listFaq);
+                    for (var i = 0; i < listFaq.length; i++) {
+                        result += '<tr>';
+                        result += '<td hidden>' + listFaq[i].id + '</td>';
+                        result += '<td>' + listFaq[i].faq1 + '</td>';
+                        result += '<td>' + listFaq[i].anSwer + '</td>';
+                        result += '<td><button type="button" class="btn btn-gradient-warning btnUpdateFAQ"><i class="mdi mdi-grease-pencil"></i></button>';
+                        result += '<button type="button" class="btn btn-gradient-danger btnDelFAQ"><i class="mdi mdi-delete-forever"></i></button></td>';
+                        result += '</tr>';
+                    }
+                    $('#tbodyFAQ').html(result);
+                    alert("Success");
                 }
-                $('#tbodyFAQ').html(result);
-                alert("Success");
-            }
-        });
+            });
+        }
     });
     $("#tableAcc").on('click', '.btnDelAcc', function () {
-        // get the current row
-        var currentRow = $(this).closest("tr");
-        var idAcc = currentRow.find("td:eq(0)").text();
-        $.ajax({
-            type: 'GET',
-            url: '/admin/account/del',
-            data: {
-                idAcc: idAcc
-            },
-            contentType: '/application/json; charset=utf-8',
-            dataType: 'json',
-            success: function (listAcc) {
-                var result = '';
-                
-                for (var i = 0; i < listAcc.length; i++) {
-                    result += '<tr>';
-                    result += '<td hidden>' + listAcc[i].id + '</td>';
-                    result += '<td><img src="/img/avatar/' + listAcc[i].img+'" class="mr-2" alt="image">' + listAcc[i].userName + '</td>';
-                    result += '<td>' + listAcc[i].idPeople + '</td>';
-                    result += '<td>' + convertDate(listAcc[i].date) + '</td>';
-                    result += '<td>' + listAcc[i].role + '</td>';
-                    if (listAcc[i].status) {
-                        result += '<td><label class="badge badge-gradient-success" > ENABLE</label></td>';
-                    } else {
-                        result += '<td><label class="badge badge-gradient-danger" > DISNABLE</label></td>';
+        if (confirm('are you sure?')) {
+            var currentRow = $(this).closest("tr");
+            var idAcc = currentRow.find("td:eq(0)").text();
+            $.ajax({
+                type: 'GET',
+                url: '/admin/account/del',
+                data: {
+                    idAcc: idAcc
+                },
+                contentType: '/application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (listAcc) {
+                    var result = '';
+
+                    for (var i = 0; i < listAcc.length; i++) {
+                        result += '<tr>';
+                        result += '<td hidden>' + listAcc[i].id + '</td>';
+                        result += '<td><img src="/img/avatar/' + listAcc[i].img + '" class="mr-2" alt="image">' + listAcc[i].userName + '</td>';
+                        result += '<td>' + listAcc[i].idPeople + '</td>';
+                        result += '<td>' + convertDate(listAcc[i].date) + '</td>';
+                        result += '<td>' + listAcc[i].role + '</td>';
+                        if (listAcc[i].status) {
+                            result += '<td><label class="badge badge-gradient-success" > ENABLE</label></td>';
+                        } else {
+                            result += '<td><label class="badge badge-gradient-danger" > DISNABLE</label></td>';
+                        }
+                        result += '<td><button class="btn btn-gradient-danger btnDelAcc"><i class="mdi mdi-account-remove"></i></button></td>';
+                        result += '</tr>';
                     }
-                    result += '<td><button class="btn btn-gradient-danger btnDelAcc"><i class="mdi mdi-account-remove"></i></button></td>';
-                    result += '</tr>';
+                    $('#tbodyAcc').html(result);
+                    alert("Success");
                 }
-                $('#tbodyAcc').html(result);
-                alert("Success");
-            }
-        });
+            });
+        }
     });
 });

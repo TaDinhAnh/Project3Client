@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Client.ServiceAPI;
+using Microsoft.AspNetCore.Http;
 
 namespace Client.Controllers
 {
@@ -16,6 +17,7 @@ namespace Client.Controllers
         private readonly ILogger<HomeController> _logger;
 
         private IAccountAPI accountAPI;
+        
         public HomeController(ILogger<HomeController> logger, IAccountAPI _accountAPI)
         {
             _logger = logger;
@@ -26,7 +28,7 @@ namespace Client.Controllers
         [Route("")]
         public IActionResult Index()
         {
-
+        
             return View();
         }
         [Route("login")]
@@ -44,7 +46,7 @@ namespace Client.Controllers
             return acc.Role switch
             {
                 "sv" => Redirect("/home/index"),
-                "gv" => Redirect("/admin/home/index"),
+                "admin" => Redirect("/admin/home/index"),
                 _ => RedirectToAction("/home/Login")
             };
         }

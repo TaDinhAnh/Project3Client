@@ -22,7 +22,22 @@ namespace Client.Areas.Admin.Controllers
         public IActionResult Index()
         {
             ViewBag.listQuestion = questionAPI.findAll();
-            ViewBag.listAnswer = answerAPI.findAll();
+
+            return View();
+        }
+        [Route("delQuestion")]
+        public IActionResult DelQuestion(int idQuestion)
+        {
+            
+            var listQuestion = questionAPI.delQuestion(idQuestion);
+            return new JsonResult(listQuestion);
+        }
+        [Route("detailQues")]
+        public IActionResult DetailQuestion(int idQues)
+        {
+            var question = questionAPI.DetailQuestion(idQues);
+            ViewBag.Question = question;
+            ViewBag.listAnswer = question.Answers;
             return View();
         }
     }

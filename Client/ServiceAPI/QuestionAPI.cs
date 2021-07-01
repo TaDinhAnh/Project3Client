@@ -12,6 +12,29 @@ namespace Client.ServiceAPI
     public class QuestionAPI : IQuestionAPI
     {
         private string BASE_URL = "http://localhost:5000/api/question/";
+
+        public List<Question> delQuestion(int idQuestion)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+
+                var response = http.DeleteAsync("del/" + idQuestion).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Question>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public List<Question> findAll()
         {
             try
@@ -25,6 +48,27 @@ namespace Client.ServiceAPI
                 {
                     var res = response.Content.ReadAsStringAsync().Result;
                     return JsonConvert.DeserializeObject<List<Question>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public Question DetailQuestion(int idQuestion)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+
+                var response = http.GetAsync("find/" + idQuestion).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<Question>(res);
                 }
                 return null;
             }

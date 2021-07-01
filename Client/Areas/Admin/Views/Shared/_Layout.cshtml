@@ -2,19 +2,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin</title>
     <link rel="stylesheet" href="~/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="shortcut icon" href="~/assets/images/favicon.ico" />
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        #speaker {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
 
+            #speaker #details {
+                height: 150px;
+            }
+
+            #speaker #details {
+                background: rgba(6, 12, 34, 0.76);
+                position: absolute;
+                left: 0;
+                bottom: -50px;
+                right: 0;
+                text-align: center;
+                padding-top: 10px;
+                transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+            }
+
+                #speaker #details h3 {
+                    color: #fff;
+                    font-size: 22px;
+                    font-weight: 600;
+                    margin-bottom: 5px;
+                }
+
+                #speaker #details p {
+                    color: #fff;
+                    font-size: 15px;
+                    margin-bottom: 10px;
+                    font-style: italic;
+                }
+
+                #speaker #details #social {
+                    height: 30px;
+                }
+
+                #speaker #details a {
+                    color: #fff;
+                }
+
+            #speaker:hover #details {
+                bottom: 0;
+            }
+    </style>
 </head>
 <body>
-
     <div class="container-scroller">
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
@@ -165,9 +212,7 @@
                 </button>
             </div>
         </nav>
-        <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-            <!-- partial:partials/_sidebar.html -->
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item nav-profile">
@@ -175,7 +220,6 @@
                             <div class="nav-profile-image">
                                 <img src="~/assets/images/faces/face1.jpg" alt="profile">
                                 <span class="login-status online"></span>
-                                <!--change to offline or busy as needed-->
                             </div>
                             <div class="nav-profile-text d-flex flex-column">
                                 <span class="font-weight-bold mb-2">David Grey. H</span>
@@ -198,7 +242,7 @@
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="seminar">List</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="seminar" asp-action="index">List</a></li>
                                 <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="seminar" asp-action="create">Create</a></li>
                             </ul>
                         </div>
@@ -223,46 +267,40 @@
                     </li>
                 </ul>
             </nav>
-            <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
                     @RenderBody()
                 </div>
-                <!-- content-wrapper ends -->
-                <!-- partial:partials/_footer.html -->
                 <footer class="footer">
                     <div class="container-fluid clearfix">
                         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2021</span>
                     </div>
                 </footer>
-                <!-- partial -->
             </div>
-            <!-- main-panel ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
 
     <script src="~/assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="~/assets/vendors/chart.js/Chart.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
+    @*<script src="~/assets/vendors/chart.js/Chart.min.js"></script>*@
     <script src="~/assets/js/off-canvas.js"></script>
-    <script src="~/assets/js/hoverable-collapse.js"></script>
-    <script src="~/assets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
+    @*<script src="~/assets/js/hoverable-collapse.js"></script>*@
+    @*<script src="~/assets/js/misc.js"></script>*@
     <script src="~/assets/js/dashboard.js"></script>
     <script src="~/assets/js/todolist.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/Ajax.js"></script>
+    <script src="~/assets/js/file-upload.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.25/datatables.min.js"></script>
+    <script src="~/js/faq.js"></script>
+    <script src="~/js/seminar.js"></script>
+    <script src="~/js/question.js"></script>
+    @*<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>*@
 
-    
-  
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+    <script>
+        $(function () {
+            $(".datepicker").datepicker();
+
+        });
+    </script>
 </body>
 </html>

@@ -15,16 +15,20 @@ namespace Client.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         private ISeminarAPI seminarAPI;
-        public HomeController(ISeminarAPI _seminarAPI)
+        private IScoreAPI scoreAPI;
+        public HomeController(ISeminarAPI _seminarAPI, IScoreAPI _scoreAPI)
         {
             seminarAPI = _seminarAPI;
+            scoreAPI = _scoreAPI;
         }
         [Route("Index")]
         [Route("")]
         [Route("~/")]
         public IActionResult Index()
         {
-            ViewBag.listSeminar = seminarAPI.findResent();
+            ViewBag.listSeminarDTO = seminarAPI.findResent(4);
+            ViewBag.listScore = scoreAPI.Top(3);
+           
             return View();
         }
     }

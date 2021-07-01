@@ -124,3 +124,7 @@ C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Client.pdb
 C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Client.genruntimeconfig.cache
 C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\FAQ\Index.cshtml.g.cs
 C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Client.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Seminar\Details.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Seminar\Performent.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Seminar\Image.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Question\DetailQuestion.cshtml.g.cs
