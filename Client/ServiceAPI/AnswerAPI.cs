@@ -98,5 +98,27 @@ namespace Client.ServiceAPI
                 return null;
             }
         }
+        public List<Answer> Update(Answer answer)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+
+                var response = http.PutAsJsonAsync("update", answer).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Answer>>(res);
+
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

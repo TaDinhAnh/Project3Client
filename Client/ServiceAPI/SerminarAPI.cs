@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using System.Net.Http.Headers;
 using Client.Models;
 using Newtonsoft.Json;
-using System.Net.Http.Json;
+
 using Client.DTO;
+using System.Net.Http.Json;
+
 namespace Client.ServiceAPI
 {
     public class SerminarAPI : ISeminarAPI
@@ -201,6 +203,88 @@ namespace Client.ServiceAPI
             }
 
         }
-      
+
+        public string CountAccept()
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+                var response = http.GetAsync("countAccept").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsStringAsync().Result;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+        public List<Seminar> ListAccept()
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+                var response = http.GetAsync("listAccept").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Seminar>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+        public string Accept(int idSeminar)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+                var response = http.GetAsync("accept/" + idSeminar).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsStringAsync().Result;
+
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public string DelAccept(int idSeminar)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+                var response = http.DeleteAsync("delAccept/" + idSeminar).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsStringAsync().Result;
+
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
     }
 }

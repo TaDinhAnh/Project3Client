@@ -30,18 +30,6 @@
                         <input type="text" class="form-control" id="Name" asp-for="Name" placeholder="Name" required disabled>
                     </div>
                     <div class="form-group">
-                        <h6><label for="topic">Topic</label></h6>
-                        <select class="form-control" asp-for="IdTopic" id="topic" disabled>
-                            @if (ViewBag.listTopic != null)
-                            {
-                                foreach (var item in ViewBag.listTopic)
-                                {
-                                    <option value="@item.Id">@item.Topic1</option>
-                                }
-                            }
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <h6> <label for="daypicker">Date</label></h6>
                         @{ var ngay = Model.Day?.ToString("MM/dd/yyyy");}
                         <input type="text" class="form-control" id="datepicker" asp-for="Day" value="@ngay" required disabled>
@@ -173,18 +161,6 @@
                             <input type="text" class="form-control" id="Name" asp-for="Name" placeholder="Name" required>
                         </div>
                         <div class="form-group">
-                            <h6><label for="topic">Topic</label></h6>
-                            <select class="form-control" asp-for="IdTopic" id="topic">
-                                @if (ViewBag.listTopic != null)
-                                {
-                                    foreach (var item in ViewBag.listTopic)
-                                    {
-                                        <option value="@item.Id">@item.Topic1</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <h6> <label for="daypicker">Date</label></h6>
                             @{ var day = Model.Day?.ToString("MM/dd/yyyy");}
                             <input type="text" class="form-control datepicker" value="@day" asp-for="Day" required>
@@ -237,9 +213,9 @@
                             <textarea class="form-control" id="desc" asp-for="Descriptoin" rows="4"></textarea>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" @(Model.Status == true ? "checked" : "") id="defaultCheck1" name="status">
-                            <label class="form-check-label" for="defaultCheck1">
-                                Default checkbox
+                            <input class="form-check-input" type="checkbox"  id="defaultCheck1" asp-for="Status">
+                            <label class="form-check-label" for="defaultCheck1" >
+                                Status
                             </label>
                         </div>
                         <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>

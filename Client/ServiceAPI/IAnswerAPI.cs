@@ -11,5 +11,6 @@ namespace Client.ServiceAPI
         Answer find(int idAnswer);
         List<Answer> Add(Answer answer);
         List<Answer> Del(int idAnswer, int idQues);
+        List<Answer> Update(Answer answer);
     }
 }

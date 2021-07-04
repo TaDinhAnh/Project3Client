@@ -38,5 +38,12 @@ namespace Client.Areas.Admin.Controllers
             var answer = answerAPI.find(idAnswer);
             return new JsonResult(answer);
         }
+        [Route("update")]
+        public IActionResult Update(Answer answer)
+        {
+            answer.Updated = DateTime.Now;
+            var listAnswer = answerAPI.Update(answer);
+            return new JsonResult(listAnswer);
+        }
     }
 }

@@ -19,7 +19,6 @@ namespace Client
         {
             Configuration = configuration;
         }
-
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -33,12 +32,10 @@ namespace Client
             services.AddScoped<IAnswerAPI, AnswerAPI>();
             services.AddScoped<IFaqAPI, FaqAPI>();
             services.AddScoped<IScoreAPI, ScoreAPI>();
-            services.AddScoped<ITopicAPI, TopicAPI>();
             services.AddScoped<IAllPeopleAPI, AllpeopleAPI>();
             services.AddScoped<IPerformerAPI, PerformerAPI>();
             services.AddScoped<IImgAPI, ImgAPI>();
-
-
+            services.AddScoped<ISurveyAPI, SurveyAPI>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

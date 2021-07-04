@@ -77,5 +77,124 @@ namespace Client.ServiceAPI
                 return null;
             }
         }
+        public string CountActive()
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+                var response = http.GetAsync("countActive").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsStringAsync().Result;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public string CountAcc(string idPeople)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+                var response = http.GetAsync("countAcc/" + idPeople).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsStringAsync().Result;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Account> AccountActive()
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = http.GetAsync("findAccActive").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Account>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public Account find(int idAcc)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = http.GetAsync("find/" + idAcc).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<Account>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public string Accept(int idAcc)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+                var response = http.GetAsync("accept/" + idAcc).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsStringAsync().Result;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public string DelAccept(int idAcc)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+                var response = http.DeleteAsync("delAccept/" + idAcc).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsStringAsync().Result;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

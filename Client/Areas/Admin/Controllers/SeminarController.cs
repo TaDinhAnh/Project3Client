@@ -20,16 +20,14 @@ namespace Client.Areas.Admin.Controllers
     [Route("admin/seminar")]
     public class SeminarController : Controller
     {
-        private ITopicAPI topicAPI;
         private ISeminarAPI seminarAPI;
         private IWebHostEnvironment webHostEnvironment;
         private IAllPeopleAPI allPeopleAPI;
         private IPerformerAPI performerAPI;
         private IImgAPI imgAPI;
-        public SeminarController(ISeminarAPI _seminarAPI, ITopicAPI _topicAPI, IWebHostEnvironment _webHostEnvironment, IAllPeopleAPI _allPeopleAPI, IPerformerAPI _performerAPI, IImgAPI _imgAPI)
+        public SeminarController(ISeminarAPI _seminarAPI, IWebHostEnvironment _webHostEnvironment, IAllPeopleAPI _allPeopleAPI, IPerformerAPI _performerAPI, IImgAPI _imgAPI)
         {
             seminarAPI = _seminarAPI;
-            topicAPI = _topicAPI;
             allPeopleAPI = _allPeopleAPI;
             performerAPI = _performerAPI;
             webHostEnvironment = _webHostEnvironment;
@@ -45,7 +43,6 @@ namespace Client.Areas.Admin.Controllers
         public IActionResult Create()
         {
             ViewBag.listStaff = allPeopleAPI.findStaff();
-            ViewBag.listTopic = topicAPI.FindAll();
             return View(new SeminarDTO());
         }
 
@@ -90,7 +87,6 @@ namespace Client.Areas.Admin.Controllers
         [Route("detail")]
         public IActionResult Details(int idSeminar)
         {
-            ViewBag.listTopic = topicAPI.FindAll();
             var seminar = seminarAPI.Find(idSeminar);
             ViewBag.listStaff = allPeopleAPI.findStaff();
             return View(seminar);
@@ -108,7 +104,6 @@ namespace Client.Areas.Admin.Controllers
             var seminarDTO = new SeminarDTO
             {
                 Id = seminar.Id,
-                IdTopic = seminar.IdTopic,
                 Img = seminar.Img,
                 Name = seminar.Name,
                 TimeStart = seminar.TimeStart.ToString(),
@@ -180,7 +175,7 @@ namespace Client.Areas.Admin.Controllers
         public IActionResult delImg(int idSeminar, int idImg)
         {
             imgAPI.DelImgSer(idSeminar, idImg);
-            return RedirectToAction("Image", new { idSeminar = idSeminar }); 
+            return RedirectToAction("Image", new { idSeminar = idSeminar });
         }
         [Route("addImgSer")]
         public IActionResult AddImgSer(int idSeminar, IFormFile file)
@@ -195,7 +190,31 @@ namespace Client.Areas.Admin.Controllers
             }
             var img = new Img { Id = 0, Path = fileName, IdSeminar = idSeminar };
             imgAPI.AddImgSer(img);
-            return RedirectToAction("Image", new { idSeminar = idSeminar }); 
+            return RedirectToAction("Image", new { idSeminar = idSeminar });
+        }
+        [Route("listSerActive")]
+        public IActionResult ListSerActive()
+        {
+            ViewBag.listSeminar = seminarAPI.ListAccept();
+            return View();
+        }
+
+        [Route("detailSerAccept")]
+        public IActionResult DetailSerAccept(int id)
+        {
+            return View(seminarAPI.Find(id));
+        }
+        [Route("accept")]
+        public IActionResult Accept(int id)
+        {
+            seminarAPI.Accept(id);
+            return RedirectToAction("listSerActive");
+        }
+        [Route("delAccept")]
+        public IActionResult DelAccept(int id)
+        {
+            seminarAPI.DelAccept(id);
+            return RedirectToAction("listSerActive");
         }
     }
 }

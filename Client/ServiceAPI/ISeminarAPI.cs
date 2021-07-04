@@ -18,5 +18,10 @@ namespace Client.ServiceAPI
         string update(SeminarDTO seminarDTO);
         string Create(SeminarDTO seminarDTO);
         Seminar AddPerforment(PerformenSeminar performenSeminar);
+        string CountAccept();
+
+        List<Seminar> ListAccept();
+        string Accept(int idSeminar);
+        string DelAccept(int idSeminar);
     }
 }

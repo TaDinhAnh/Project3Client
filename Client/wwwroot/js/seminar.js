@@ -5,6 +5,11 @@
         var d = new Date(stringDate)
         return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/')
     }
+    function convertDate2(stringDate) {
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        var d = new Date(stringDate)
+        return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('/')
+    }
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -69,11 +74,10 @@
                         result += '<td hidden>' + listSeminar[i].id + '</td>';
                         result += '<td><img src="/img/seminar/' + listSeminar[i].img + '" class="mr-2" alt="image">' + listSeminar[i].name + '</td>';
                         result += '<td>' + listSeminar[i].namePresenters + '</td>';
-                        result += '<td>' + listSeminar[i].day.toString('dd/MM/yyyy') + '</td>';
-                        result += '<td>' + listSeminar[i].role + '</td>';
-                        if (listSeminar[i].status && listSeminar[i].day < $.now()) {
+                        result += '<td>' + convertDate(listSeminar[i].day) + '</td>';
+                        if (listSeminar[i].status && convertDate2(listSeminar[i].day) < convertDate2(new Date())) {
                             result += '<td><label class="badge badge-gradient-success">Completed</label></td>';
-                        } else if (listSeminar[i].status && listSeminar[i].day >= $.now()) {
+                        } else if (listSeminar[i].status && convertDate2(listSeminar[i].day) >= convertDate2(new Date())) {
                             result += '<td><label class="badge badge-gradient-warning">Coming soon</label></td>';
                         } else {
                             result += '<td><label class="badge badge-gradient-danger">False</label></td>';

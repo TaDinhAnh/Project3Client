@@ -28,7 +28,7 @@ namespace Client.Areas.Admin.Controllers
         [Route("delQuestion")]
         public IActionResult DelQuestion(int idQuestion)
         {
-            
+
             var listQuestion = questionAPI.delQuestion(idQuestion);
             return new JsonResult(listQuestion);
         }
@@ -39,6 +39,20 @@ namespace Client.Areas.Admin.Controllers
             ViewBag.Question = question;
             ViewBag.listAnswer = question.Answers;
             return View();
+        }
+        [Route("create")]
+        public IActionResult Create(Question question)
+        {
+            question.Updated = DateTime.Now;
+            question.Status = true;
+            var listQuestion = questionAPI.Create(question);
+            return new JsonResult(listQuestion);
+        }
+        [Route("update")]
+        public IActionResult update(int idQuestion, string question, bool statusQuestion)
+        {
+            questionAPI.Update(new Question { Id = idQuestion, Question1 = question, Status = statusQuestion });
+            return RedirectToAction("DetailQuestion", new { idQues = idQuestion });
         }
     }
 }

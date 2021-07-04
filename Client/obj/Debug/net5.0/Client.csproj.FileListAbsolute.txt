@@ -128,3 +128,13 @@ C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\
 C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Seminar\Performent.cshtml.g.cs
 C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Seminar\Image.cshtml.g.cs
 C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Question\DetailQuestion.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\TagHelpers\Message\Message.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Account\AcceptAccount.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Account\DetailAccount.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Seminar\ListSerActive.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Seminar\DetailSerAccept.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Performer\Index.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Performer\Detail.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Allpeople\Index.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Allpeople\Detail.cshtml.g.cs
+C:\Users\Admin\Desktop\Project3Client\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Survey\Index.cshtml.g.cs

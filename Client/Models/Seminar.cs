@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Client.Models;
+
+#nullable disable
+
 namespace Client.Models
 {
-    public class Seminar
+    public partial class Seminar
     {
-
         public Seminar()
         {
             Imgs = new HashSet<Img>();
@@ -16,7 +15,6 @@ namespace Client.Models
         }
 
         public int Id { get; set; }
-        public int? IdTopic { get; set; }
         public string Img { get; set; }
         public string Name { get; set; }
         public string Presenters { get; set; }
@@ -26,10 +24,10 @@ namespace Client.Models
         public string Place { get; set; }
         public int? Maximum { get; set; }
         public int? NumberOfParticipants { get; set; }
+        public bool? Active { get; set; }
         public string Descriptoin { get; set; }
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
-        public virtual Topic IdTopicNavigation { get; set; }
         public virtual AllPerson PresentersNavigation { get; set; }
         public virtual ICollection<Img> Imgs { get; set; }
         public virtual ICollection<PerformenSeminar> PerformenSeminars { get; set; }

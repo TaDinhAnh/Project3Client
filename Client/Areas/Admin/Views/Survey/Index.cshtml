@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">List Survey</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Updated</th>
+                        <th>Object</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th> Delete </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.listSurvey != null)
+                        @foreach (var item in ViewBag.listSurvey)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>@item.Updated.ToString("dd/MM/yyyy")</td>
+                                @if (item.Active)
+                                {
+                                    <td>Staff</td>
+                                }
+                                else
+                                {
+                                    <td>Student</td>
+                                }
+                                <td>@item.Description</td>
+                                @if (item.Status)
+                                {
+                                    <td><label class="badge badge-gradient-success"> True</label></td>
+                                }
+                                else
+                                {
+                                    <td><label class="badge badge-gradient-danger"> False</label></td>
+                                }
+
+                                <td><button class="btn btn-gradient-danger btnDelAcc"><i class="mdi mdi-account-remove"></i></button></td>
+                            </tr>
+                        }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

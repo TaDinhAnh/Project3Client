@@ -9,5 +9,9 @@ namespace Client.ServiceAPI
     {
         List<AllPerson> findStaff();
         AllPerson find(string idPerson);
+        List<AllPerson> FindAll();
+        string Create(AllPerson allPerson);
+        string Del(string idPeson);
+        string Update(AllPerson allPerson);
     }
 }

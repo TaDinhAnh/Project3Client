@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 using Client.Models;
 namespace Client.ServiceAPI
 {
-    public interface ITopicAPI
+    public interface ISurveyAPI
     {
-        List<Topic> FindAll();
+        List<Survey> FindAll();
     }
 }

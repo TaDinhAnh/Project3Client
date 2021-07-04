@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 using Client.Models;
 namespace Client.ServiceAPI
 {
-   public interface IAccountAPI
+    public interface IAccountAPI
     {
+        string CountActive();
         List<Account> findAll();
         Account login(Account account);
         List<Account> Del(int idAcc);
+        List<Account> AccountActive();
+        Account find(int idAcc);
+        string Accept(int idAcc);
+        string DelAccept(int idAcc);
+        string CountAcc(string idAcc);
     }
 }

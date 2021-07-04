@@ -7,6 +7,7 @@ using Client.Models;
 using System.Net.Http.Json;
 using Newtonsoft.Json;
 using Client.ServiceAPI;
+
 namespace Client.Areas.Admin.Controllers
 {
     [Area("admin")]
@@ -14,9 +15,11 @@ namespace Client.Areas.Admin.Controllers
     public class AccountController : Controller
     {
         private IAccountAPI accountAPI;
-        public AccountController(IAccountAPI _accountAPI)
+        private IAllPeopleAPI allPeopleAPI;
+        public AccountController(IAccountAPI _accountAPI, IAllPeopleAPI _allPeopleAPI)
         {
             accountAPI = _accountAPI;
+            allPeopleAPI = _allPeopleAPI;
         }
 
         [Route("index")]
@@ -30,6 +33,32 @@ namespace Client.Areas.Admin.Controllers
         {
             var listAcc = accountAPI.Del(idAcc);
             return new JsonResult(listAcc);
+        }
+        [Route("acceptAccount")]
+        public IActionResult AcceptAccount()
+        {
+            ViewBag.listAccount = accountAPI.AccountActive();
+            return View();
+        }
+        [Route("detailAccount")]
+        public IActionResult DetailAccount(int idAccount, string idPerson)
+        {
+            ViewBag.Count = accountAPI.CountAcc(idPerson);
+            ViewBag.Account = accountAPI.find(idAccount);
+            ViewBag.InfoPerson = allPeopleAPI.find(idPerson);
+            return View();
+        }
+        [Route("delAccept")]
+        public IActionResult DelAccept(int id)
+        {
+            accountAPI.DelAccept(id);
+            return RedirectToAction("acceptAccount");
+        }
+        [Route("accept")]
+        public IActionResult Accept(int id)
+        {
+            accountAPI.Accept(id);
+            return RedirectToAction("acceptAccount");
         }
     }
 }

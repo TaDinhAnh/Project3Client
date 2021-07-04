@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Client.ServiceAPI
 {
-    public class TopicAPI : ITopicAPI
+    public class SurveyAPI : ISurveyAPI
     {
-        private string BASE_URL = "http://localhost:5000/api/topic/";
-        public List<Topic> FindAll()
+        private string BASE_URL = "http://localhost:5000/api/survey/";
+        public List<Survey> FindAll()
         {
             try
             {
@@ -23,7 +23,7 @@ namespace Client.ServiceAPI
                 if (response.IsSuccessStatusCode)
                 {
                     var res = response.Content.ReadAsStringAsync().Result;
-                    return JsonConvert.DeserializeObject<List<Topic>>(res);
+                    return JsonConvert.DeserializeObject<List<Survey>>(res);
 
                 }
                 return null;

@@ -1,4 +1,4 @@
-﻿
+﻿@model Client.Models.Question;
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -8,7 +8,9 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Question Table</h4>
-
+            <button class="btn btn-lg btn-gradient-primary " data-toggle="modal" data-target="#addQuestionModal">
+                + Add Quesntion
+            </button>
             <table class="table" id="tableQuestion">
                 <thead>
                     <tr>
@@ -37,7 +39,7 @@
                                 }
                                 <td>
                                     <button class="btn btn-gradient-danger delQuestion" type="button"><i class="mdi mdi-delete"></i></button>
-                                
+
                                     <button class="btn btn-gradient-warning">
                                         <a href="/admin/question/detailQues?idQues=@item.Id">
                                             <i class="mdi mdi-format-list-bulleted menu-icon"></i>
@@ -51,5 +53,25 @@
         </div>
     </div>
 </div>
-
-    
+<div class="modal" id="addQuestionModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Question</h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-12">
+                    <div class="card-body card-block">
+                        <form method="post" id="addQuestion">
+                            <div class="form-group">
+                                <label for="inputName" class=" form-control-label"></label>
+                                <textarea placeholder="Answer" class="form-control" asp-for="Question1" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-outline-success">Save</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
