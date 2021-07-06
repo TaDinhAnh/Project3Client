@@ -7,7 +7,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Client.ServiceAPI;
+using Client.Helpers;
+using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Client.Controllers
 {
@@ -15,48 +19,31 @@ namespace Client.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private IImgAPI imgAPI;
 
-        private IAccountAPI accountAPI;
-        
-        public HomeController(ILogger<HomeController> logger, IAccountAPI _accountAPI)
+        public HomeController(ILogger<HomeController> logger, IImgAPI _imgAPI)
         {
             _logger = logger;
-            accountAPI = _accountAPI;
+            imgAPI = _imgAPI;
         }
-
         [Route("index")]
-        [Route("")]
+        [Route("~/")]
         public IActionResult Index()
         {
-        
             return View();
         }
-        [Route("login")]
-        public IActionResult Login()
-        {
-            return View();
-        }
-        [Route("login")]
-        [HttpPost]
-        public IActionResult Login(string username, string password)
-        {
-            var acc = accountAPI.login(new Account { UserName = username, Password = password });
-            if (acc == null) return View();
 
-            return acc.Role switch
-            {
-                "sv" => Redirect("/home/index"),
-                "admin" => Redirect("/admin/home/index"),
-                _ => RedirectToAction("/home/Login")
-            };
+        [Route("gallery")]
+        public IActionResult Gallery()
+        {
+            ViewBag.img = imgAPI.FindAll();
+            return View();
         }
-        [Route("register")]
-        public IActionResult Register()
+        [Route("about")]
+        public IActionResult About()
         {
             return View();
         }
-        
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

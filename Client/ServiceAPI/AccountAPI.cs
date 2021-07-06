@@ -196,5 +196,134 @@ namespace Client.ServiceAPI
                 return null;
             }
         }
+
+
+        public string Register(Account account)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = http.PostAsJsonAsync("create", account).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return res;
+
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public string UpdatePass(Account account)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = http.PutAsJsonAsync("UpdatePass", account).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return res;
+
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public string Update(Account account)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = http.PutAsJsonAsync("Update", account).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return res;
+
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public Account FindMail(string mail)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = http.GetAsync("findmail/" + mail).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<Account>(res);
+
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public string CheckMail(string mail)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+                var response = http.GetAsync("checkmail/" + mail).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return res;
+
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public List<Account> FindTop()
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = http.GetAsync("findtop").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Account>>(res);
+
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

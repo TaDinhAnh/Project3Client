@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "rjfqviqUMmpVerIBPydEIudg4IFYrjL919MLbf/EaXzZBkEqZMfmpwfN9R/FCckoOSUXut9sbYoGbwbDqxrs9A==",
+  "dgSpecHash": "H+6T/M3aoeMJxMWXa3ZUlbVBqQ5Grn/9sWPuOF7oYhJoDdTs2j66059zhgL/QcKGfsKTJAb6sjB2lhy/hf3Fhg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin\\Desktop\\Project3Client\\Client\\Client.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

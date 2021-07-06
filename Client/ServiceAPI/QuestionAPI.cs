@@ -7,7 +7,7 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Client.Models;
 using Newtonsoft.Json;
-
+using Client.DTO;
 namespace Client.ServiceAPI
 {
     public class QuestionAPI : IQuestionAPI
@@ -78,6 +78,48 @@ namespace Client.ServiceAPI
                 return null;
             }
         }
+        public List<QuestionDTO> findQuestion(int idSurvey)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+
+                var response = http.GetAsync("findQuestion/" + idSurvey).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<QuestionDTO>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public List<Question> findAll2()
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+
+                var response = http.GetAsync("findAll2").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Question>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public Question DetailQuestion(int idQuestion)
         {
             try
@@ -112,6 +154,93 @@ namespace Client.ServiceAPI
                 {
                     var res = response.Content.ReadAsStringAsync().Result;
                     return JsonConvert.DeserializeObject<Question>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public Question Find(int id)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+
+                var response = http.GetAsync("find/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<Question>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public string CheckCorrect(int idques, int idans)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
+
+                var response = http.GetAsync("checkcorrect/" + idques + "/" + idans).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return res;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public string CountQuestion(bool count, int id)
+        {
+
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+
+                var response = http.GetAsync("count/" + count + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return res;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Question> FindByActive(bool n, int id)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+
+                var response = http.GetAsync("findbyactive/" + n + "/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Question>>(res);
                 }
                 return null;
             }

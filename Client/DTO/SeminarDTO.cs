@@ -19,5 +19,6 @@ namespace Client.DTO
         public int? Maximum { get; set; }
         public string Descriptoin { get; set; }
         public bool? Status { get; set; }
+        public bool? Active { get; set; }
     }
 }

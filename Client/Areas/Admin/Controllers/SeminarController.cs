@@ -50,6 +50,7 @@ namespace Client.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(SeminarDTO seminarDTO, IFormFile file)
         {
+            seminarDTO.Active = true;
             if (file != null)
             {
                 var ext = file.ContentType.Split(new char[] { '/' })[1];

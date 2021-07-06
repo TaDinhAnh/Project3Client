@@ -14,6 +14,26 @@ namespace Client.ServiceAPI
     public class ImgAPI : IImgAPI
     {
         private string BASE_URL = "http://localhost:5000/api/img/";
+        public List<Img> FindAll()
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = http.GetAsync("findAll").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Img>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public List<Img> GetImgSer(int idSeminar)
         {
             try

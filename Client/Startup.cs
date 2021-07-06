@@ -26,6 +26,7 @@ namespace Client
         {
             services.AddControllersWithViews();
             services.AddHttpClient();
+            services.AddSession();
             services.AddScoped<ISeminarAPI, SerminarAPI>();
             services.AddScoped<IAccountAPI, AccountAPI>();
             services.AddScoped<IQuestionAPI, QuestionAPI>();
@@ -36,6 +37,9 @@ namespace Client
             services.AddScoped<IPerformerAPI, PerformerAPI>();
             services.AddScoped<IImgAPI, ImgAPI>();
             services.AddScoped<ISurveyAPI, SurveyAPI>();
+            services.AddScoped<ICommentAPI, CommentAPI>();
+            services.AddScoped<IQuestionSurveyAPI, QuestionSurveyAPI>();
+            services.AddScoped<IRegisterSeminarAPI, RegisterSeminarAPI>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +54,7 @@ namespace Client
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();

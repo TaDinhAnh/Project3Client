@@ -16,19 +16,19 @@ namespace Client.Areas.Admin.Controllers
     {
         private ISeminarAPI seminarAPI;
         private IScoreAPI scoreAPI;
-        public HomeController(ISeminarAPI _seminarAPI, IScoreAPI _scoreAPI)
+        private ICommentAPI commentAPI;
+        public HomeController(ISeminarAPI _seminarAPI, IScoreAPI _scoreAPI, ICommentAPI _commentAPI)
         {
             seminarAPI = _seminarAPI;
             scoreAPI = _scoreAPI;
+            commentAPI = _commentAPI;
         }
         [Route("Index")]
         [Route("")]
-        [Route("~/")]
         public IActionResult Index()
         {
             ViewBag.listSeminarDTO = seminarAPI.findResent(4);
-            ViewBag.listScore = scoreAPI.Top(3);
-           
+            ViewBag.listCmtDTO = commentAPI.FindAll2();
             return View();
         }
     }

@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <h6> <label for="daypicker">Date</label></h6>
-                    <input type="text" class="form-control datepicker"  asp-for="Day" required>
+                    <input type="text" class="form-control datepicker" asp-for="Day" required>
                 </div>
 
                 <div class="form-group">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group">
                     <h6> <label for="maximum">Maximum number of people</label></h6>
-                    <input type="text" class="form-control" id="maximum" asp-for="Maximum" pattern="[0-9]{3}" required>
+                    <input type="text" class="form-control" id="maximum" asp-for="Maximum" pattern="[0-9]{1,5}" required>
                 </div>
                 <div class="form-group">
                     <h6><label for="desc">Description</label></h6>

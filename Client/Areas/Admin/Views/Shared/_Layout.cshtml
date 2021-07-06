@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http;
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,11 +86,14 @@
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                             <div class="nav-profile-img">
-                                <img src="~/assets/images/faces/face1.jpg" alt="image">
+                                <img src="~/img/avatar/@(Context.Session.GetString("img")!= null ? Context.Session.GetString("img") : "avatar1.jpg" )" alt="image">
                                 <span class="availability-status online"></span>
                             </div>
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">David Greymaax</p>
+                                @if (Context.Session.GetString("username") != null)
+                                {
+                                    <p class="mb-1 text-black">@Context.Session.GetString("username")</p>
+                                }
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
@@ -98,7 +101,7 @@
                                 <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" asp-area="admin" asp-controller="account" asp-action="logout">
                                 <i class="mdi mdi-logout mr-2 text-primary"></i> Signout
                             </a>
                         </div>
@@ -172,11 +175,11 @@
                     <li class="nav-item nav-profile">
                         <a href="#" class="nav-link">
                             <div class="nav-profile-image">
-                                <img src="~/assets/images/faces/face1.jpg" alt="profile">
+                                <img src="~/img/avatar/@(Context.Session.GetString("img")!= null ? Context.Session.GetString("img") : "avatar1.jpg" )" alt="image">
                                 <span class="login-status online"></span>
                             </div>
                             <div class="nav-profile-text d-flex flex-column">
-                                <span class="font-weight-bold mb-2">David Grey. H</span>
+                                <span class="font-weight-bold mb-2"> @(Context.Session.GetString("username") != null? Context.Session.GetString("username"):"admin")</span>
                                 <span class="text-secondary text-small">Project Manager</span>
                             </div>
                             <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
@@ -202,10 +205,17 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-area="admin" asp-controller="survey" asp-action="index">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                             <span class="menu-title">Survey</span>
+                            <i class="menu-arrow"></i>
                             <i class="mdi mdi-format-list-bulleted menu-icon"></i>
                         </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="survey" asp-action="index">List</a></li>
+                                <li class="nav-item"> <a class="nav-link" asp-area="admin" asp-controller="survey" asp-action="create">Create</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" asp-area="admin" asp-controller="account" asp-action="index">
@@ -254,10 +264,7 @@
     </div>
 
     <script src="~/assets/vendors/js/vendor.bundle.base.js"></script>
-    @*<script src="~/assets/vendors/chart.js/Chart.min.js"></script>*@
     <script src="~/assets/js/off-canvas.js"></script>
-    @*<script src="~/assets/js/hoverable-collapse.js"></script>*@
-    @*<script src="~/assets/js/misc.js"></script>*@
     <script src="~/assets/js/dashboard.js"></script>
     <script src="~/assets/js/todolist.js"></script>
     <script src="~/assets/js/file-upload.js"></script>
@@ -265,8 +272,7 @@
     <script src="~/js/faq.js"></script>
     <script src="~/js/seminar.js"></script>
     <script src="~/js/question.js"></script>
-    @*<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>*@
-
+    <script src="~/js/Survey.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script>

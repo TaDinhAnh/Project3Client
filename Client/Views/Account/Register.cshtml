@@ -1,4 +1,10 @@
 ﻿
+@if (ViewBag.msg != null)
+{
+    <script>alert("@ViewBag.msg")</script>
+}
+@model Client.Models.Account
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,18 +42,18 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Registration Form</h2>
-                    <form method="POST">
+                    <form method="POST" asp-controller="account" asp-action="register">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Username</label>
-                                    <input class="input--style-4" type="text" name="username">
+                                    <input class="input--style-4" type="text" asp-for="UserName" required>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Class</label>
-                                    <input class="input--style-4" type="text" name="class">
+                                    <input class="input--style-4" type="text" asp-for="Class">
                                 </div>
                             </div>
                         </div>
@@ -56,59 +62,74 @@
                                 <div class="input-group">
                                     <label class="label">Date</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="birthday">
+                                        <input class="input--style-4 js-datepicker" type="text" asp-for="Date">
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Gender</label>
+                                    <label class="label">Idperson</label>
+                                    <input class="input--style-4" type="text" asp-for="IdPeople" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" asp-for="Email" required>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Role</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">
-                                            Male
-                                            <input type="radio" checked="checked" name="gender">
+                                            Student
+                                            <input type="radio" checked="checked" name="role" value="sv" asp-for="Role">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">
-                                            Female
-                                            <input type="radio" name="gender">
+                                            Teacher
+                                            <input type="radio" name="role" value="gv" asp-for="Role">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">
+                                            Staff
+                                            <input type="radio" name="role" value="nv" asp-for="Role">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <div class="input-group">
-                                <label class="label">Email</label>
-                                <input class="input--style-4" type="email" name="email">
-                            </div>
-                        </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="pass">
-                                </div> 
+                                    <input class="input--style-4" type="password" name="pass" asp-for="Password" required>
+                                </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Confirm Password</label>
-                                    <input class="input--style-4" type="password" name="pass">
+                                    <input class="input--style-4" type="password" name="connfirmpass" required>
                                 </div>
                             </div>
                         </div>
 
                         <div class="p-t-15">
-                            <a asp-controller="home" asp-action="index" class="btn btn--radius-2 btn--green">Back</a>
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                            <a style="text-decoration: none" asp-controller="home" asp-action="index" class="btn btn--radius-2 btn--green">Back</a>
+                            <button class="btn btn--radius-2 btn--blue" type="submit" id="submit">Submit</button>
+                            <input type="hidden" asp-for="Id" />
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
     <!-- Jquery JS-->
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->

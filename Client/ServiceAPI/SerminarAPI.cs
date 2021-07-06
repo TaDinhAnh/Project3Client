@@ -16,6 +16,26 @@ namespace Client.ServiceAPI
     {
         private string BASE_URL = "http://localhost:5000/api/seminar/";
 
+        public List<Seminar> findAll()
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+                var response = http.GetAsync("findAll").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Seminar>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public List<SeminarDTO> findAll2()
         {
             try
@@ -24,6 +44,26 @@ namespace Client.ServiceAPI
                 http.BaseAddress = new Uri(BASE_URL);
                 http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
                 var response = http.GetAsync("findAll2").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<SeminarDTO>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public List<SeminarDTO> findAll3(string idPerson)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+                var response = http.GetAsync("findAll3/" + idPerson).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     var res = response.Content.ReadAsStringAsync().Result;
@@ -285,6 +325,89 @@ namespace Client.ServiceAPI
                 return null;
             }
         }
+        public SeminarDTO FindDTO(int idseminar)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+                var response = http.GetAsync("find/" + idseminar).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<SeminarDTO>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public Seminar UpdateNum(int id)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+                var response = http.GetAsync("updatenum/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<Seminar>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public string CheckMaximum()
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+                var response = http.GetAsync("checkmaximum").Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return res;
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Seminar> RegisteredSeminar(int id)
+        {
+            try
+            {
+                var http = new HttpClient();
+                http.BaseAddress = new Uri(BASE_URL);
+                http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("Application/json"));
+                var response = http.GetAsync("register/" + id).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var res = response.Content.ReadAsStringAsync().Result;
+                    return JsonConvert.DeserializeObject<List<Seminar>>(res);
+                }
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
 
     }
 }

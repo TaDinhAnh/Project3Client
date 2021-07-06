@@ -60,5 +60,15 @@ namespace Client.Areas.Admin.Controllers
             accountAPI.Accept(id);
             return RedirectToAction("acceptAccount");
         }
+        [Route("logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Remove("username");
+            HttpContext.Session.Remove("accounts");
+            HttpContext.Session.Remove("idPeople");
+            HttpContext.Session.Remove("id");
+            HttpContext.Session.Remove("img");
+            return RedirectToAction(actionName: "Login", controllerName: "account");
+        }
     }
 }

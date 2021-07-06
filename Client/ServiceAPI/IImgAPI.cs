@@ -10,5 +10,6 @@ namespace Client.ServiceAPI
         List<Img> GetImgSer(int idSeminar);
         string DelImgSer(int idSeminar, int idImg);
         string AddImgSer(Img img);
+        List<Img> FindAll();
     }
 }

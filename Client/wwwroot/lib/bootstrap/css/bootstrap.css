@@ -575,7 +575,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container {
-    max-width: 1140px;
+    max-width: 750px;
   }
 }
 
@@ -594,6 +594,7 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
+  margin-top:20%;
 }
 
 .no-gutters {
@@ -5417,7 +5418,6 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000;
 }
 
 .modal-backdrop.fade {
@@ -7699,7 +7699,7 @@ button.bg-dark:focus {
 
 .pr-5,
 .px-5 {
-  padding-right: 3rem !important;
+  padding-right: 17rem !important;
 }
 
 .pb-5,

@@ -17,5 +17,12 @@ namespace Client.ServiceAPI
         string Accept(int idAcc);
         string DelAccept(int idAcc);
         string CountAcc(string idAcc);
+
+        string Register(Account account);
+        string CheckMail(string mail);
+        string Update(Account account);
+        string UpdatePass(Account account);
+        Account FindMail(string mail);
+        List<Account> FindTop();
     }
 }

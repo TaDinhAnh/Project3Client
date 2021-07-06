@@ -11,11 +11,12 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Updated</th>
+                        <th>
+                            Updated
+                        </th>
                         <th>Object</th>
                         <th>Description</th>
-                        <th>Status</th>
-                        <th> Delete </th>
+                        <th> Action </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,23 +30,33 @@
                                 <td>@item.Updated.ToString("dd/MM/yyyy")</td>
                                 @if (item.Active)
                                 {
-                                    <td>Staff</td>
+                                    <td>Teacher</td>
                                 }
                                 else
                                 {
                                     <td>Student</td>
                                 }
                                 <td>@item.Description</td>
-                                @if (item.Status)
-                                {
-                                    <td><label class="badge badge-gradient-success"> True</label></td>
-                                }
-                                else
-                                {
-                                    <td><label class="badge badge-gradient-danger"> False</label></td>
-                                }
-
-                                <td><button class="btn btn-gradient-danger btnDelAcc"><i class="mdi mdi-account-remove"></i></button></td>
+                                <td>
+                                    @if (item.Updated > DateTime.Now)
+                                    {
+                                        <button class="btn btn-gradient-danger btnDelAcc">
+                                            <a asp-area="admin" asp-controller="survey" asp-action="del" asp-route-id="@item.Id">
+                                                <i class="mdi mdi-account-remove"></i>
+                                            </a>
+                                        </button>
+                                        <button class="btn btn-gradient-danger btnDelAcc">
+                                            <a asp-area="admin" asp-controller="survey" asp-action="update" asp-route-id="@item.Id">
+                                                <i class="mdi mdi-grease-pencil"></i>
+                                            </a>
+                                        </button>
+                                    }
+                                    <button class="btn btn-gradient-danger btnDelAcc">
+                                        <a asp-area="admin" asp-controller="survey" asp-action="detail" asp-route-id="@item.Id">
+                                            <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+                                        </a>
+                                    </button>
+                                </td>
                             </tr>
                         }
                 </tbody>

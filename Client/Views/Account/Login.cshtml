@@ -1,5 +1,4 @@
-﻿
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
     <title>Login</title>
@@ -9,9 +8,9 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
     <link rel="stylesheet" href="~/css/stylelogin.css">
-
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
 </head>
 <body>
     <section class="ftco-section">
@@ -25,7 +24,7 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="login-wrap p-0">
                         <h3 class="mb-4 text-center">Have an account?</h3>
-                        <form method="post" asp-controller="home" asp-action="login" class="signin-form">
+                        <form method="post" asp-controller="account" asp-action="login" class="signin-form">
                             <div class="form-group">
                                 <input type="text" class="form-control" name="username" placeholder="Username" required>
                             </div>
@@ -33,8 +32,6 @@
                                 <input id="password-field" type="password" name="password" class="form-control" placeholder="Password" required>
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
-                            
-
                             <div class="form-group">
                                 <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
                             </div>
@@ -45,23 +42,21 @@
                                         <input type="checkbox" checked>
                                         <span class="checkmark"></span>
                                     </label>
-                                </div> 
+                                </div>
                                 <div class="w-50 text-md-right">
-                                    <a href="#" style="color: #fff">Forgot Password</a>
+                                    <a asp-controller="account" asp-action="forgotpass" style="color: #fff">Forgot Password</a>
                                 </div>
                             </div>
                         </form>
                         <div class="social d-flex text-center">
                             <a asp-controller="home" asp-action="index" class="px-2 py-2 mr-md-1 rounded">Back</a>
-                            <a asp-controller="home" asp-action="register" class="px-2 py-2 ml-md-1 rounded">Register</a>
+                            <a asp-controller="account" asp-action="register" class="px-2 py-2 ml-md-1 rounded">Register</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
 </body>
 </html>
 
